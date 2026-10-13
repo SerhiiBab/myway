@@ -1,0 +1,109 @@
+.myway-benefits {
+  --benefits-blue: #003f52;
+  --benefits-yellow: #ffab00;
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
+  overflow: hidden;
+  min-height: 424px;
+  background-color: var(--benefits-blue);
+  color: #fff;
+  font-family: "Source Sans 3", "Source Sans Pro", Arial, sans-serif;
+}
+
+/* PNG sits on top of the blue background, not in place of it. */
+.myway-benefits::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image: url("https://myway-business.de/wp-content/uploads/2024/12/netz-footer-3.png");
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: auto 100%;
+  pointer-events: none;
+}
+
+.myway-benefits *,
+.myway-benefits *::before,
+.myway-benefits *::after {
+  box-sizing: border-box;
+}
+
+.myway-benefits__inner {
+  width: min(1400px, calc(100% - 48px));
+  margin-inline: auto;
+  padding: 32px 0 42px;
+}
+
+.myway-benefits__title {
+  margin: 0;
+  font-size: clamp(28px, 2.2vw, 36px);
+  line-height: 1.2;
+  font-weight: 300;
+}
+
+.myway-benefits__subtitle {
+  margin: 2px 0 30px;
+  font-size: clamp(19px, 1.35vw, 24px);
+  line-height: 1.25;
+  font-weight: 400;
+}
+
+.myway-benefits__topics {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: flex-start;
+  column-gap: 20px;
+  row-gap: 14px;
+  max-width: 1120px;
+}
+
+.myway-benefits__topic {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 6px 24px;
+  border: 2px solid var(--benefits-yellow);
+  border-radius: 11px;
+  color: var(--benefits-yellow);
+  background: transparent;
+  font-size: clamp(17px, 1.22vw, 23px);
+  line-height: 1.35;
+  text-align: center;
+  text-decoration: none;
+  transition: color .24s ease, background-color .24s ease, transform .24s ease;
+}
+
+.myway-benefits__topic:hover,
+.myway-benefits__topic:focus-visible {
+  color: var(--benefits-blue);
+  background-color: var(--benefits-yellow);
+  transform: translateY(-3px);
+}
+
+.myway-benefits__topic:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .myway-benefits::before { background-size: auto 85%; opacity: .7; }
+  .myway-benefits__inner { padding-block: 36px 48px; }
+  .myway-benefits__topics { gap: 12px; }
+  .myway-benefits__topic { padding: 8px 18px; }
+}
+
+@media (max-width: 600px) {
+  .myway-benefits__inner { width: min(100% - 32px, 480px); }
+  .myway-benefits__subtitle { margin-bottom: 24px; }
+  .myway-benefits__topics { align-items: stretch; gap: 10px; }
+  .myway-benefits__topic { width: 100%; font-size: 18px; min-height: 48px; }
+  .myway-benefits::before { background-size: auto 70%; opacity: .4; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .myway-benefits__topic { transition: none; }
+}

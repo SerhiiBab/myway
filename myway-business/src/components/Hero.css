@@ -1,0 +1,140 @@
+.myway-hero {
+  --myway-hero-blue: #004458;
+  --myway-hero-yellow: #ffab00;
+  --myway-hero-footer-blue: #688ea0;
+  position: relative;
+  isolation: isolate;
+  min-height: 700px;
+  color: var(--myway-hero-blue);
+  font-family: "Source Sans 3", "Source Sans Pro", Arial, sans-serif;
+  background: var(--myway-hero-footer-blue);
+}
+
+.myway-hero *,
+.myway-hero *::before,
+.myway-hero *::after { box-sizing: border-box; }
+
+.myway-hero__image {
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 78px;
+  background-image: url("https://myway-business.de/wp-content/uploads/2025/01/Frame-1-15.jpg");
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.myway-hero__container {
+  width: min(1400px, calc(100% - 48px));
+  min-height: 700px;
+  margin: 0 auto;
+  padding-top: 138px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.myway-hero__eyebrow {
+  font-size: clamp(23px, 2.1vw, 34px);
+  font-weight: 300;
+  line-height: 1.26;
+  margin: 0 0 27px;
+  letter-spacing: .01em;
+}
+
+.myway-hero h1 {
+  margin: 0;
+  font-size: clamp(42px, 3.65vw, 68px);
+  line-height: 1.06;
+  font-weight: 700;
+  letter-spacing: .003em;
+}
+
+.myway-hero__navigation {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: end;
+  gap: 28px;
+  padding-bottom: 33px;
+}
+
+.myway-hero__card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-height: 101px;
+  padding: 16px 20px 36px;
+  background: var(--myway-hero-yellow);
+  color: var(--myway-hero-blue);
+  text-decoration: none;
+  font-size: clamp(19px, 1.7vw, 34px);
+  line-height: 1.18;
+  font-weight: 400;
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+  transform: translateY(0);
+  transition: transform .32s cubic-bezier(.2,.7,.2,1), box-shadow .32s ease, background-color .32s ease;
+  will-change: transform;
+}
+
+.myway-hero__arrow {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  right: 16px;
+  bottom: 8px;
+  transition: transform .32s ease;
+}
+
+.myway-hero__card:hover,
+.myway-hero__card:focus-visible {
+  transform: translateY(-8px);
+  box-shadow: 0 5px 14px rgba(0,0,0,.22);
+  background-color: #ffb300;
+}
+
+.myway-hero__card:hover .myway-hero__arrow,
+.myway-hero__card:focus-visible .myway-hero__arrow { transform: translateX(4px); }
+.myway-hero__card:focus-visible { outline: 3px solid var(--myway-hero-blue); outline-offset: 3px; }
+
+@media (max-width: 1000px) {
+  .myway-hero,
+  .myway-hero__container { min-height: 660px; }
+  .myway-hero__container { padding-top: 90px; }
+  .myway-hero__navigation { gap: 14px; }
+  .myway-hero__card { min-height: 90px; padding: 15px 15px 37px; }
+}
+
+@media (max-width: 700px) {
+  .myway-hero { min-height: auto; }
+  .myway-hero__image { inset: 0 0 90px; background-position: 57% top; }
+  .myway-hero__image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(242,247,248,.9), rgba(242,247,248,.55));
+  }
+  .myway-hero__container {
+    width: min(100% - 32px, 550px);
+    min-height: 0;
+    padding-top: 80px;
+  }
+  .myway-hero__intro { padding-bottom: 72px; }
+  .myway-hero__eyebrow { font-size: clamp(20px, 4.2vw, 28px); margin-bottom: 25px; }
+  .myway-hero__desktop-break { display: none; }
+  .myway-hero h1 { font-size: clamp(36px, 7vw, 52px); overflow-wrap: anywhere; }
+  .myway-hero h1 br { display: none; }
+  .myway-hero__navigation { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding-bottom: 30px; }
+  .myway-hero__card { min-height: 95px; font-size: clamp(18px, 3.7vw, 26px); }
+}
+
+@media (max-width: 390px) {
+  .myway-hero__navigation { grid-template-columns: 1fr; }
+  .myway-hero__card { min-height: 72px; }
+  .myway-hero__intro { padding-bottom: 45px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .myway-hero__card,
+  .myway-hero__arrow { transition: none; }
+}
